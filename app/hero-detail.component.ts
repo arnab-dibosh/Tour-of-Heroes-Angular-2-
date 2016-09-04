@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { Hero } from './hero';
+import { Hero }        from './hero';
 import { HeroService } from './hero.service';
 
 @Component({
@@ -23,6 +23,11 @@ export class HeroDetailComponent implements OnInit {
       this.heroService.getHero(id)
         .then(hero => this.hero = hero);
     });
+  }
+
+  save(): void {
+    this.heroService.update(this.hero)
+      .then(this.goBack);
   }
 
   goBack(): void {
